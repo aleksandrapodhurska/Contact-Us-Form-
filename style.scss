@@ -1,0 +1,211 @@
+// Comon styles
+
+$main-dark-bg: #3e3e3e;
+$main-dark-title: #4d4d4e;
+$main-theme: #DD318D;
+$main-input: #dddddd;
+$main-placeholder: #656565;
+
+body,
+button,
+input,
+textarea {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    scroll-behavior: smooth;
+}
+
+.background {
+    display: flex;
+    min-height: 100vh;
+    background-color: $main-theme;
+}
+
+.container {
+    margin: auto;
+}
+
+// Screen and header
+
+@mixin screen($width: 700px, $bg-color: $main-dark-bg) {
+    width: $width;
+    background-color: $bg-color;
+    border-radius: 10px;
+    filter: drop-shadow(0px 25px 45px rgba(0, 0, 0, 0.25));
+}
+
+@mixin screen-header($bg-color: $main-dark-title) {
+    background-color: $main-dark-title;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    height: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-control {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.menu-control-item {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: .5rem;
+    cursor: pointer;
+}
+
+.red {
+    background-color: #ed1c6f;
+}
+
+.yellow {
+    background-color: #e8e925;
+}
+
+.green {
+    background-color: #74c54f;
+}
+
+.close-got {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    margin-right: .2rem;
+    background-color: #999999;
+}
+
+.screen {
+    @include screen(550px, $main-dark-bg);
+}
+
+.screen-header {
+    @include screen-header;
+}
+
+// Screen items
+
+.screen-body {
+    display: flex;
+}
+
+.screen-body-item {
+    flex: 1 1;
+    padding: 40px;
+}
+
+.screen-body-item-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.screen-title {
+    color: $main-theme;
+    position: relative;
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.screen-title::after {
+    content: "";
+    display: block;
+    width: 10%;
+    height: 3px;
+
+    background-color: $main-theme;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+}
+
+.contact-info {
+    text-transform: uppercase;
+    color: $main-input;
+    opacity: .4;
+    font-size: 8px;
+    margin-top: 15px;
+}
+
+@mixin input($placeholder-color: $main-placeholder) {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid $placeholder-color;
+    width: 100%;
+    padding: .5rem 0;
+
+    transition: linear .2s;
+}
+
+.input-group-item {
+    margin-bottom: 15px;
+}
+
+.input {
+    @include input($main-placeholder);
+    color: $main-input;
+}
+
+.input.message {
+    margin-top: 2rem;
+    resize: none;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+.customized-scrollbar::-webkit-scrollbar {
+    width: 7px;
+    background-color: $main-dark-title;
+}
+
+.customized-scrollbar::-webkit-scrollbar-thumb {
+    background-color: $main-theme;
+}
+
+.input:focus {
+    outline: none;
+    border-bottom: 1px solid $main-input;
+}
+
+.screen-buttons {
+    text-align: right;
+}
+
+@mixin button($text-color: $main-theme) {
+    cursor: pointer;
+    color: $text-color;
+    background-color: transparent;
+    border: none;
+}
+
+.screen-button {
+    @include button();
+}
+
+@media (max-width: 580px) {
+    .screen {
+        @include screen(300px, $main-dark-bg);
+    }
+
+    .screen-body {
+        flex-direction: column;
+    }
+
+    .screen-body-item.screen-body-item-left {
+        padding-bottom: 20px;
+    }
+}
